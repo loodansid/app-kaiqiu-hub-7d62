@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开球网 · 资料整理与信息索引平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fce5c9 0%, #fae1b5 30%, #f6d6a0 60%, #f2cfa3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 2rem 1rem;
+            line-height: 1.6;
+            color: #2f2e2b;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 20px 40px -10px rgba(110, 60, 20, 0.2), 0 8px 20px rgba(0,0,0,0.03);
+            padding: 2.8rem 2.8rem 2.4rem;
+            transition: all 0.15s ease;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 2rem 1.2rem;
+                border-radius: 32px;
+            }
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #4b3722;
+            border-left: 6px solid #dba269;
+            padding-left: 1rem;
+            margin-bottom: 1.6rem;
+            line-height: 1.25;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #6b4f32;
+            margin-bottom: 2.2rem;
+            background: #f8efe2;
+            display: inline-block;
+            padding: 0.2rem 1rem 0.2rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 390;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #4b3722;
+            margin-top: 2.2rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #e7d7c0;
+            padding-bottom: 0.3rem;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            color: #3a352f;
+        }
+
+        .highlight-block {
+            background: #faf1e6;
+            border-radius: 24px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0;
+            border-left: 6px solid #dba269;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+            margin: 1.2rem 0 1.6rem;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #fcf6ed;
+            padding: 1.2rem 1.2rem 1rem;
+            border-radius: 28px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .feature-item strong {
+            display: block;
+            font-size: 1.1rem;
+            color: #6b4a28;
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item span {
+            font-size: 0.95rem;
+            color: #4c4037;
+        }
+
+        .use-cases {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin: 0.6rem 0 1.2rem;
+        }
+
+        .use-case {
+            background: #f9f3ea;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.98rem;
+            display: inline-block;
+            width: fit-content;
+            color: #3d3127;
+        }
+
+        .faq-mini {
+            margin: 1.6rem 0 0.8rem;
+            border-top: 1px dashed #dccabc;
+            padding-top: 1rem;
+        }
+
+        .faq-q {
+            font-weight: 560;
+            color: #5a4029;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .faq-a {
+            margin-left: 1rem;
+            color: #4c4037;
+        }
+
+        .action-note {
+            background: #efe3d5;
+            border-radius: 80px;
+            padding: 0.6rem 1.6rem;
+            font-size: 0.97rem;
+            display: inline-block;
+            margin: 1rem 0 0.2rem;
+        }
+
+        a {
+            color: #b7723b;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.05rem 0.25rem;
+            border-radius: 20px;
+            transition: background 0.15s, color 0.1s;
+        }
+
+        a:hover {
+            background: #dba26930;
+            color: #875a2e;
+            text-decoration: underline wavy #dba269 1px;
+            text-underline-offset: 4px;
+        }
+
+        .inline-link-wrap {
+            background: #f4e7d9;
+            border-radius: 60px;
+            padding: 0 0.3rem;
+            display: inline-block;
+            line-height: 1.6;
+        }
+
+        .footer-note {
+            margin-top: 2.6rem;
+            font-size: 0.85rem;
+            color: #6f5f4e;
+            border-top: 1px solid #e2d0bc;
+            padding-top: 1.4rem;
+            text-align: left;
+            opacity: 0.85;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px dotted #dac2ac;
+            margin: 1.2rem 0;
+        }
+
+        .soft-tip {
+            background: #fffaef;
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            font-size: 0.92rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h1>开球网 · 资料整理与信息索引</h1>
+    <div class="tagline">摘要 · 结构化 · 轻量索引</div>
+    
+    <p>
+        <a href="https://app-kaiqiu.com" style="text-decoration: underline wavy #dba269 0.5px; text-underline-offset: 5px; background: #f4e1cd; padding: 0.1rem 0.5rem; border-radius: 30px;">开球网</a>
+        是一个以资料整理为核心逻辑的线上信息索引工具。它并不承担内容生成或知识库职能，而是将分散、嵌套或结构模糊的信息，以清晰且一致的方式呈现给使用者。从使用场景看，它更接近一种“轻量级目录化展示面板”——尤其适合需要按主题或类别快速获取结构化信息的人。
+    </p>
+
+    <div class="highlight-block">
+        <strong style="display: block; font-weight: 600; margin-bottom: 0.3rem;">📋 核心定位</strong>
+        不强调推荐算法或社交互动，聚焦于信息本身的层级与归属关系。如果你常面对零散的笔记、书签、文档片段，或者需要为团队或自己整理一份可复用、可分享的索引页，那么<a href="https://app-kaiqiu.com">开球网</a>提供了相对克制但直观的呈现方式。
+    </div>
+
+    <h2>主要特点</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <strong>🧩 目录式结构</strong>
+            <span>信息按主题／子主题归类，支持嵌套折叠，便于聚焦某一分支。</span>
+        </div>
+        <div class="feature-item">
+            <strong>🔗 纯链接索引</strong>
+            <span>条目本身可附加外部链接或备注，适合作为参考清单或资源集合。</span>
+        </div>
+        <div class="feature-item">
+            <strong>📄 低干扰界面</strong>
+            <span>无信息流、无推送，版面以内容层级为优先级，避免额外认知负担。</span>
+        </div>
+    </div>
+
+    <h2>使用建议 · 从场景出发</h2>
+    <div class="use-cases">
+        <div class="use-case">▸ 个人知识库 —— 将不同来源的文章、文档、笔记按主题整理，保留原文链接。</div>
+        <div class="use-case">▸ 项目参考目录 —— 为团队收集规范、设计稿、技术文档，按模块分组展示。</div>
+        <div class="use-case">▸ 兴趣索引 —— 整理播客、书单、工具站等链接，方便日后检索或分享。</div>
+    </div>
+    <p style="margin-top: 0.4rem;">
+        在使用时不需要频繁刷新或维护，填入条目和备注后即可生成一份静态化的信息面板。对于需要长期维护的索引，建议定期梳理分类层级，保持结构简洁。
+    </p>
+
+    <h2>FAQ 摘要</h2>
+    <div class="faq-mini">
+        <div class="faq-q">❓ 是否需要注册或登录？</div>
+        <div class="faq-a"><a href="https://app-kaiqiu.com">开球网</a>提供直接访问的基础索引页面，部分深层编辑或个性化存储可能需要账号，具体以平台实际功能为准。</div>
+
+        <div class="faq-q">❓ 适合非技术背景的人使用吗？</div>
+        <div class="faq-a">界面以文字和链接为主，无代码或复杂配置，只需填写信息即可生成索引。基本的复制、粘贴和拖拽操作即可完成整理。</div>
+
+        <div class="faq-q">❓ 数据和链接会丢失吗？</div>
+        <div class="faq-a">建议定期将结构化内容导出备份。平台不承担数据保管责任，常规使用时保持本地副本会更稳妥。</div>
+    </div>
+
+    <hr />
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.8rem; margin: 0.6rem 0;">
+        <div class="soft-tip">
+            ⚡ 可结合笔记软件或本地文档共同使用，效果更一致
+        </div>
+        <div class="soft-tip" style="background: #ede0d2;">
+            🔍 索引本身不是数据库，而是信息导航
+        </div>
+    </div>
+
+    <div class="action-note">
+        → 当前页面仅作介绍，具体结构与功能以 <a href="https://app-kaiqiu.com" style="font-weight: 500; background: transparent; padding: 0;">开球网</a> 实际版本为准
+    </div>
+
+    <div class="footer-note">
+        本页内容基于公开信息与产品方向整理，不构成任何功能承诺。使用前建议自行评估是否符合个人或团队的整理习惯。
+        <br/>
+        <span style="opacity: 0.5; font-size: 0.75rem;">资料整理 · 信息索引 · 保持简洁</span>
+    </div>
+</div>
+</body>
+</html>
