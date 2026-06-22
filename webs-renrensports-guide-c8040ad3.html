@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人人体育 · 运动生活知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f8f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2e2c;
+            padding: 1.5rem;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 36px;
+            box-shadow: 0 12px 30px rgba(0, 60, 50, 0.08);
+            padding: 2rem 1.8rem 3.5rem;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            color: #0e4b46;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #51756b;
+            margin-bottom: 2.2rem;
+            border-left: 4px solid #52b9aa;
+            padding-left: 1rem;
+        }
+
+        .hero-note {
+            background: #e6f3ef;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hero-note p {
+            flex: 1;
+            font-size: 1.05rem;
+            color: #1d3b35;
+        }
+
+        .hero-note .badge {
+            background: #ffffffcc;
+            backdrop-filter: blur(2px);
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: #0e5b4e;
+            font-weight: 500;
+            white-space: nowrap;
+            border: 1px solid #a2d3c9;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0 2rem;
+        }
+
+        .card {
+            background: #f9fcfb;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem 1.8rem;
+            border: 1px solid #d5ebe4;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(20, 90, 75, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #0e574b;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #52b9aa;
+            border-radius: 20px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #3a5a51;
+            margin-bottom: 1.2rem;
+        }
+
+        .card .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.6rem;
+        }
+
+        .tag-list span {
+            background: #e6f2ee;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #1f5548;
+        }
+
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2.8rem 0 1.8rem;
+            padding: 1.5rem 0;
+            border-top: 2px solid #d2e9e1;
+            border-bottom: 2px solid #d2e9e1;
+        }
+
+        .info-col {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .info-col h4 {
+            font-weight: 500;
+            color: #0b4f43;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .info-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-col li {
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+            color: #2a544a;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .info-col li::before {
+            content: "·";
+            color: #52b9aa;
+            font-weight: bold;
+        }
+
+        .faq-preview {
+            background: #f2fbf8;
+            border-radius: 28px;
+            padding: 1.8rem 2rem;
+            margin: 2.2rem 0 1.5rem;
+        }
+
+        .faq-preview details {
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #c6ddd4;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-preview summary {
+            font-weight: 500;
+            color: #155a4a;
+            cursor: pointer;
+            padding: 0.2rem 0;
+            font-size: 1rem;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-preview summary::before {
+            content: "▸";
+            color: #52b9aa;
+            font-size: 1.2rem;
+            transition: transform 0.15s;
+        }
+
+        .faq-preview details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-preview .answer {
+            margin: 0.5rem 0 0.2rem 1.6rem;
+            color: #2e5a4e;
+            font-size: 0.9rem;
+        }
+
+        .callout-tip {
+            background: #daf0e9;
+            border-radius: 20px;
+            padding: 1.2rem 1.8rem;
+            margin: 1.8rem 0 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .callout-tip .emoji-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .callout-tip .tip-text {
+            flex: 1;
+            color: #1b4f42;
+            font-size: 0.95rem;
+        }
+
+        .callout-tip .tip-text strong {
+            color: #0c473b;
+        }
+
+        .footer-line {
+            margin-top: 2.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #5d7f73;
+            border-top: 1px solid #d2e9e1;
+            padding-top: 1.8rem;
+        }
+
+        .footer-line a {
+            color: #1b6b5a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.15s;
+        }
+
+        .footer-line a:hover {
+            border-bottom: 1px solid #52b9aa;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 0.8rem;
+            }
+
+            .page {
+                padding: 1.5rem 1rem 2.5rem;
+                border-radius: 24px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-note {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.4rem;
+            }
+
+            .grid-cards {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .info-section {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .faq-preview {
+                padding: 1.2rem;
+            }
+
+            .callout-tip {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <h1>人人体育 · 运动生活知识库</h1>
+    <div class="subhead">从日常动起来到专项训练，一份可以随时查阅的实用手册</div>
+
+    <div class="hero-note">
+        <p>无论是刚接触运动的初学者，还是希望提升效率的爱好者，<a href="https://webs-renrensports.com" style="color:#0b5e4d; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">人人体育</a> 希望为每个人提供扎实的信息与清晰的路径。这里没有复杂术语，只有贴近生活的运动认知。</p>
+        <span class="badge">📚 持续更新 · 开放查阅</span>
+    </div>
+
+    <!-- 目录感卡片网格 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3>基础运动知识</h3>
+            <p>了解身体活动的基本原理，热身与冷身、心率区间、日常活动量参考。适合用来建立自己的运动框架。</p>
+            <div class="tag-list">
+                <span>热身流程</span>
+                <span>心率范围</span>
+                <span>每日步数</span>
+                <span>拉伸要点</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>场景 · 居家 / 户外</h3>
+            <p>不同环境下的运动方案：室内自重训练、公园慢跑、骑行通勤、周末轻徒步。强调可持续性而非强度。</p>
+            <div class="tag-list">
+                <span>居家循环</span>
+                <span>户外路线</span>
+                <span>碎片活动</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>恢复与饮食提示</h3>
+            <p>运动后的营养补充、睡眠与肌肉恢复、常见小酸痛的应对思路。不提供极端饮食建议，只聚焦常识。</p>
+            <div class="tag-list">
+                <span>蛋白质摄入</span>
+                <span>水分策略</span>
+                <span>休息日</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>心理与习惯</h3>
+            <p>运动坚持的动力来源、如何设定小目标、克服拖延的微习惯。让身体活动融入生活节奏。</p>
+            <div class="tag-list">
+                <span>微习惯</span>
+                <span>正念运动</span>
+                <span>记录方法</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="info-section">
+        <div class="info-col">
+            <h4>📖 知识库结构</h4>
+            <ul>
+                <li>入门指南与常见疑问</li>
+                <li>动作库 · 图文说明</li>
+                <li>周计划示例与调整</li>
+                <li>装备与场地选择参考</li>
+            </ul>
+        </div>
+        <div class="info-col">
+            <h4>🔍 你可以探索</h4>
+            <ul>
+                <li>不同季节的运动注意</li>
+                <li>办公室微活动方案</li>
+                <li>运动损伤预防思路</li>
+                <li>家庭共同运动建议</li>
+            </ul>
+        </div>
+        <div class="info-col">
+            <h4>📌 内容来源说明</h4>
+            <ul>
+                <li>基于公开运动指南与常识</li>
+                <li>不替代专业医疗建议</li>
+                <li>保持信息可追溯</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="callout-tip">
+        <span class="emoji-icon">🧭</span>
+        <div class="tip-text">
+            <strong>使用提示：</strong> 知识库内容偏向通用参考，每个人身体状况不同，请根据自身感受调整活动强度。若存在健康顾虑，建议先咨询相关专业人员。
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-preview">
+        <details>
+            <summary>我完全没运动基础，应该从哪里看起？</summary>
+            <div class="answer">可以从“基础运动知识”卡片开始，了解热身、心率和每日活动量的基本概念。然后尝试每周增加几次短时间散步或居家简单动作，逐步建立节奏。</div>
+        </details>
+        <details>
+            <summary>知识库里的计划可以照搬吗？</summary>
+            <div class="answer">更建议作为参考框架，根据你的时间、体力、偏好进行调整。例如周计划示例里如果某天强度偏高，可以拆分或替换为低强度活动。</div>
+        </details>
+        <details>
+            <summary>受伤后还能参考这里的恢复内容吗？</summary>
+            <div class="answer">恢复与饮食提示部分仅提供一般性常识，急性损伤或持续疼痛应先寻求医疗评估。康复阶段的活动选择需遵医嘱。</div>
+        </details>
+    </div>
+
+    <!-- 嵌入链接的句子（自然） -->
+    <p style="margin: 2rem 0 0.2rem; font-size: 0.95rem; color: #3d6b5d;">
+        如果你希望进一步浏览更完整的运动信息与日常灵感，可以前往 <a href="https://webs-renrensports.com" style="color:#1b6b5a; font-weight: 500; text-decoration: underline; text-underline-offset: 3px;">人人体育</a> 查阅持续整理的分类内容。
+    </p>
+
+    <div class="footer-line">
+        <span>知识库 · 开放阅览 · 回归运动本身</span>
+    </div>
+
+</div>
+</body>
+</html>
